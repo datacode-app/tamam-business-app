@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- Production domain configuration -->
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">admin.tamam.shop</domain>
+        <domain includeSubdomains="true">tamam.shop</domain>
+        <domain includeSubdomains="true">admin.tamam.krd</domain>
+        <domain includeSubdomains="true">tamam.krd</domain>
+        <trust-anchors>
+            <!-- Trust system CAs for production -->
+            <certificates src="system"/>
+        </trust-anchors>
+    </domain-config>
+    
+    <!-- Development/staging domain configuration -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">dev1.tamam.krd</domain>
+        <domain includeSubdomains="true">localhost</domain>
+        <domain includeSubdomains="true">10.0.2.2</domain>
+        <domain includeSubdomains="true">192.168.1.0/24</domain>
+    </domain-config>
+    
+    <!-- Default configuration for other domains -->
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system"/>
+        </trust-anchors>
+    </base-config>
+</network-security-config>

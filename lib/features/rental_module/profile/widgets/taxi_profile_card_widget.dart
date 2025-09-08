@@ -1,0 +1,36 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:get/get.dart';
+
+// Project imports:
+import 'package:tamam_business/util/dimensions.dart';
+import 'package:tamam_business/util/styles.dart';
+
+class TaxiProfileCardWidget extends StatelessWidget {
+  final String title;
+  final String data;
+  const TaxiProfileCardWidget({super.key, required this.data, required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(child: Container(
+      height: 100,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
+        color: Theme.of(context).cardColor,
+        boxShadow: [BoxShadow(color: Colors.grey[Get.isDarkMode ? 850 : 200]!, blurRadius: 5, spreadRadius: 1)],
+      ),
+      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        Text(data, style: robotoMedium.copyWith(
+          fontSize: Dimensions.fontSizeExtraLarge, color: Theme.of(context).primaryColor,
+        )),
+        const SizedBox(height: Dimensions.paddingSizeSmall),
+        Text(title, style: robotoRegular.copyWith(
+          fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).disabledColor,
+        )),
+      ]),
+    ));
+  }
+}
